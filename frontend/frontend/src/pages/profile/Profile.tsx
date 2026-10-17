@@ -1,0 +1,2 @@
+import { Card,PageHeader } from '../../components/ui'
+export default function Profile(){return(<><PageHeader t="Mon profil"/><Card style={{maxWidth:520}}><div style={{display:'flex',flexDirection:'column',gap:12}}><input className="input" defaultValue="Manel Mahmoudi"/><input className="input" defaultValue="manel.mahmoudi@tekup.tn"/><input className="input" defaultValue="Energy Manager" disabled/><button className="btn pri" style={{alignSelf:'start'}}>Enregistrer les modifications</button></div></Card></>)}

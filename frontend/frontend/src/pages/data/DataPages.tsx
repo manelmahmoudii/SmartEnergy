@@ -1,0 +1,8 @@
+import { UploadCloud,CheckCircle2 } from 'lucide-react'
+import { Card,PageHeader,Kpi } from '../../components/ui'
+export function ImportData(){return(<><PageHeader t="Importer les données énergétiques" s="Fichiers CSV ou Excel, associés à un bâtiment"/>
+<div className="drop"><UploadCloud size={44} color="#38e0ff"/><h2 style={{marginTop:12}}>Déposez votre fichier ici</h2><p className="mute">Formats acceptés : CSV, XLSX · 50 Mo maximum</p><button className="btn pri" style={{marginTop:16}}>Choisir un fichier</button></div>
+<Card t="Derniers imports" cls="mt">{[['consommation_blocB_2026.csv','52 416 lignes','Importé'],['data_center_sept.csv','43 200 lignes','Importé']].map(r=><div className="row" key={r[0]}><span><b>{r[0]}</b> <span className="mute">· {r[1]}</span></span><span className="down"><CheckCircle2 size={16}/> {r[2]}</span></div>)}</Card></>)}
+export function Preprocessing(){return(<><PageHeader t="Préparation des données" s="Qualité du jeu de données avant l’entraînement" a={<button className="btn pri">Lancer le nettoyage</button>}/>
+<div className="grid g4"><Kpi icon="∅" color="#ffb547" l="Valeurs manquantes" v="1,8 %"/><Kpi icon="≡" color="#7c6cff" l="Doublons" v="124"/><Kpi icon="!" color="#ff5d7a" l="Valeurs aberrantes" v="312"/><Kpi icon="✓" color="#2de3a6" l="Score qualité" v="94 / 100"/></div>
+<Card t="Étapes de traitement" cls="mt">{['Imputation des valeurs manquantes (interpolation)','Suppression des doublons','Détection des aberrants (IQR)','Création des variables (heure, jour, saison)'].map((s,i)=><div className="row" key={s}><span>{s}</span><span className={i<3?'down':'mute'}>{i<3?'Terminé':'En attente'}</span></div>)}</Card></>)}

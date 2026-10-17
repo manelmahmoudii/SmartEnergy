@@ -1,0 +1,9 @@
+venv/
+.venv/
+__pycache__/
+.pytest_cache/
+.env
+storage/raw/*
+storage/processed/*
+storage/models/*
+!storage/**/.gitkeep
