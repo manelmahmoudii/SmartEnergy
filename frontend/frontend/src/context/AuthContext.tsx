@@ -1,7 +1,12 @@
 import { createContext, ReactNode, useContext, useState } from 'react'
 import { login, UserDto } from '../services/authService'
 
-interface Ctx { user: UserDto | null; signIn: (email: string, password: string) => Promise<void>; signOut: () => void }
+interface Ctx {
+  user: UserDto | null
+  signIn: (email: string, password: string) => Promise<void>
+  signOut: () => void
+  updateUser: (u: UserDto) => void
+}
 const AuthCtx = createContext<Ctx>(null!)
 export const useAuth = () => useContext(AuthCtx)
 
@@ -16,5 +21,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     setUser(r.user)
   }
   const signOut = () => { localStorage.removeItem('token'); localStorage.removeItem('user'); setUser(null) }
-  return <AuthCtx.Provider value={{ user, signIn, signOut }}>{children}</AuthCtx.Provider>
+  const updateUser = (u: UserDto) => { localStorage.setItem('user', JSON.stringify(u)); setUser(u) }
+  return <AuthCtx.Provider value={{ user, signIn, signOut, updateUser }}>{children}</AuthCtx.Provider>
 }

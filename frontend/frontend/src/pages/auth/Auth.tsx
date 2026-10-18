@@ -76,6 +76,7 @@ export function Register() {
         <select className="input" value={role} onChange={e => setRole(e.target.value as RoleCode)}>
           <option value="ENERGY_MANAGER">Energy Manager</option>
           <option value="DATA_SCIENTIST">Data Scientist</option>
+          <option value="BATIMENT">Bâtiment</option>
         </select>
       </label>
       <button className="btn pri" style={{ justifyContent: 'center' }} disabled={loading}>{loading ? 'Envoi en cours…' : 'Envoyer la demande'}</button>
